@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B.C DEV and DESIGNER and CONTENT EDITOR</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+      color:#f0f0f0;line-height:1.6
+    }
+
+    /* ===== INTRO OVERLAY ===== */
+    #intro {
+      position: fixed;
+      top:0;left:0;width:100%;height:100%;
+      background:#0f2027;
+      display:flex;align-items:center;justify-content:center;
+      z-index:2000;
+      animation: fadeOut 1s ease forwards;
+      animation-delay: 3.5s; /* thời gian text tồn tại */
+    }
+    #intro h1{
+      font-size:2rem;
+      color:#00ffe0;
+      opacity:0;
+      animation: fadeInScale 1s ease forwards;
+    }
+
+    @keyframes fadeInScale {
+      from {opacity:0;transform:scale(0.9);}
+      to {opacity:1;transform:scale(1);}
+    }
+    @keyframes fadeOut {
+      to {opacity:0;visibility:hidden;}
+    }
+
+    /* ===== HEADER... các CSS cũ của bạn giữ nguyên ===== */
+    header{
+      position:fixed;top:0;width:100%;
+      background:rgba(0,0,0,0.7);
+      padding:15px 40px;display:flex;justify-content:space-between;align-items:center;
+      z-index:1000;backdrop-filter:blur(8px)
+    }
+    header h1{color:#00ffe0;font-size:1.5rem;font-weight:600}
+    nav ul{list-style:none;display:flex;gap:20px}
+    nav ul li a{color:#fff;text-decoration:none;font-weight:500;transition:.3s}
+    nav ul li a:hover{color:#00ffe0}
+    section{min-height:100vh;padding:100px 40px;display:flex;flex-direction:column;justify-content:center}
+    section h2{font-size:2.2rem;margin-bottom:40px;color:#00ffe0;text-align:center}
+  </style>
+</head>
+<body>
+  <!-- INTRO TEXT -->
+  <div id="intro">
+    <h1>B.C DEV and DESIGNER and CONTENT EDITOR</h1>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <h1>B.C DEV</h1>
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <h1 data-animate>Xin chào, Tôi là B.C DEV</h1>
+    <p data-animate>Developer • Designer • Content Editor</p>
+    <a href="#contact" class="btn" data-animate>Hire Me</a>
+  </section>
+
+  <!-- ...phần còn lại giữ nguyên... -->
+
+  <script>
+    /* Animation on scroll */
+    const elements=document.querySelectorAll("[data-animate]");
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add("active");observer.unobserve(entry.target);}
+      });
+    },{threshold:0.2});
+    elements.forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
